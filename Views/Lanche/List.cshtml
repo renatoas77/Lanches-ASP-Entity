@@ -1,0 +1,48 @@
+﻿@model IEnumerable<SiteLanches.Models.Lanche>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h2>Todos os lanches</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                 <h6>Imagem</h6>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Preco)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <h4>@item.Nome</h4>
+                </td>
+                <td>
+                    <p><img src ="@item.ImagemUrl" width="450" height="250"></p>
+                </td>
+                <td>
+                    <h3>Preço: @item.Preco.ToString("c")</h3>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.LancheId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.LancheId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.LancheId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
