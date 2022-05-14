@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SiteLanches.Repositories.Interfaces;
+using SiteLanches.ViewModels;
 
 namespace SiteLanches.Controllers
 {
@@ -14,9 +15,13 @@ namespace SiteLanches.Controllers
 
         public IActionResult List()
         {
-            var lanches = _lancheRepository.Lanches;
+            //var lanches = _lancheRepository.Lanches;
+            //return View(lanches);
+            var lanchesListViewModel = new LancheListViewModel();
+            lanchesListViewModel.Lanches = _lancheRepository.Lanches;
+            lanchesListViewModel.CategoriaAtual = "Categoria Atual";
 
-            return View(lanches);
+            return View(lanchesListViewModel);
         }
     }
 }
